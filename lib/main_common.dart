@@ -37,6 +37,12 @@ class _MyAppState extends State<MyApp> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+    context.read<AppSettingsState>().init();
+  }
+
+  @override
   Widget build(BuildContext context) {
     // 1- Get the globbal settings state
     AppSettingsState settingsState = context.read<AppSettingsState>();

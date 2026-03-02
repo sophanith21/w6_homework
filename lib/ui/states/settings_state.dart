@@ -4,14 +4,13 @@ import 'package:w6_homework/data/repositories/settings/app_settings_repository.d
 import '../../model/settings/app_settings.dart';
 
 class AppSettingsState extends ChangeNotifier {
+  final AppSettingsRepository _appSettingsRepository;
   AppSettings? _appSettings;
 
-  AppSettingsState(AppSettingsRepository repos) {
-    init(repos);
-  }
+  AppSettingsState(this._appSettingsRepository);
 
-  Future<void> init(AppSettingsRepository repos) async {
-    _appSettings = await repos.load();
+  Future<void> init() async {
+    _appSettings = await _appSettingsRepository.load();
   }
 
   ThemeColor get theme => _appSettings?.themeColor ?? ThemeColor.blue;
